@@ -3,3 +3,49 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.choice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: #4a95b0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    gap: 20%;
+}
+
+.instructions{
+    font-size: 20px;
+    color: #fff;
+}
+
+.display-dog{
+    padding: 0 10% 0 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dog{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: solid 1px #fff;
+}
+
+.dog p{
+    font-size: 32px;
+    color: #fff;
+}
+
+.hide{
+    display: none;
+}

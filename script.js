@@ -1,7 +1,31 @@
+const choice = document.querySelector(".choice");
 const canvas = document.querySelector("#dog");
+const displayDog = document.querySelector(".display-dog");
+
+
+for (let i = 1; i <= 8; i++) {
+    let div = document.createElement("div");
+    div.classList.add("dog");
+    let numberP = document.createElement("p");
+    numberP.textContent = i;
+    div.appendChild(numberP);
+    let newCanvasDog = document.createElement("canvas");
+    newCanvasDog.width = 64;
+    newCanvasDog.height = 48;
+    let ctxDog = newCanvasDog.getContext("2d");
+    let spriteDog = new Image();
+    spriteDog.src = `./assets/sprite/${i}.png`;
+    spriteDog.onload = function () {
+        ctxDog.drawImage(spriteDog, 0, 0, 64, 48, 0, 0, 64, 48);
+        div.appendChild(newCanvasDog);
+        displayDog.appendChild(div);
+    }   
+}
+
+
 const ctx = canvas.getContext("2d");
 const sprite = new Image();
-sprite.src = "./assets/sprite/Dog_White.png";
+sprite.src = "./assets/sprite/1.png";
 
 
 let position = {
@@ -10,7 +34,7 @@ let position = {
 };
 let frame = 0;
 
-let currentAnimation = "idle";
+let currentAnimation = "run";
 
 const states = {
     "idle": 0,
@@ -19,6 +43,22 @@ const states = {
     "sit": 3,
     "lying": 4,
 };
+
+const avalaibleDogs = [
+    "one", "two", "three", "four", "five", "six", "seven", "eight",
+    "1", "2", "3", "4", "5", "6", "7", "8"
+];
+
+const letterToNumber = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8"
+};   
 
 
 if (annyang) {
@@ -32,7 +72,7 @@ if (annyang) {
         "what's your name": function () {
             alert('My name is DOGO !');
         },
-        "barks": function () {
+        "bark": function () {
             let audio = new Audio('./assets/audio/aboiement.mp3');
             audio.play();
         },
@@ -51,7 +91,23 @@ if (annyang) {
         "stand up": function () {
             currentAnimation = "idle";
             position.x = 0;
-        }
+        },
+        "I want a new dog": function () {
+            choice.classList.remove("hide");
+        },
+
+        "I want the dog number *tag": function (tag) {
+            //console.log(tag);
+            if (avalaibleDogs.includes(tag)) {
+                if (tag.length > 1) {
+                    tag = letterToNumber[tag];
+                }
+                sprite.src = `./assets/sprite/${tag}.png`;
+                choice.classList.add("hide");
+            } else {
+                alert('This dog does not exist !');
+            }
+        },
 
     };
 
@@ -108,8 +164,3 @@ function animate() {
     frame++;
 }
 animate();
-
-
-
-
-
