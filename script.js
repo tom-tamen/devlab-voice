@@ -19,3 +19,31 @@ if (annyang) {
     // Démarrer annyang
     annyang.start();
 }
+
+const canvas = document.querySelector("#dog");
+
+const ctx = canvas.getContext("2d");
+const sprite = new Image();
+sprite.src = "./assets/sprite/Dog_White.png";
+
+
+let position = 0;
+let frame = 0;
+
+
+function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(sprite, position, 0, 64, 48, 0, 0, 64, 48);
+    
+    if (frame % 20 === 0) {
+        position += 64;
+    }
+    
+    if (position > 832-48) {
+        position = 0;
+    }
+
+    frame++;
+}
+animate();
