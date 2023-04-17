@@ -8,25 +8,40 @@
     <title>Friendly dogo</title>
 </head>
 <body>
-    <h1>Friendly dogo !</h1>
-    <p>Actions :</p>
-    <ul>
-        <li>sit down</li>
-        <li>walk</li>
-        <li>run</li>
-        <li>stand up</li>
-        <li>lie down</li>
-        <li>bark</li>
-        <li>I want a new dog</li>
-    </ul>
-    <div class="choice">
-        <div class="instructions">
-            <h2>Choose your dog.</h2>
-            <p>Just say : "I want the dog number ..."</p>
+    <main>
+        <div class="dogos-container"></div>
+        <div class="dogos-choice">
+            <h2 class="instructions">Choose your dog.</h2>
+            <p class="instructions">Just say : "I want the dog number ..."</p>
+            <div class="dogos"></div>
         </div>
-        <div class="display-dog"></div>
+        <div class="dogos-commands hide">
+            <ul>
+                <li class="sit">sit down</li>
+                <li class="walk">walk</li>
+                <li class="run active">run</li>
+                <li class="stand">stand up</li>
+                <li class="lie">lie down</li>
+                <li class="bark">bark</li>
+                <li>I want a new dog</li>
+            </ul>
+        </div>
+    </main>
+    <div style="display: none;">
+
+        <h1>Friendly dogo !</h1>
+        <p>Actions :</p>
+        <ul>
+            <li>sit down</li>
+            <li>walk</li>
+            <li>run</li>
+            <li>stand up</li>
+            <li>lie down</li>
+            <li>bark</li>
+            <li>I want a new dog</li>
+        </ul>
+        <canvas id="dog"></canvas>
     </div>
-    <canvas id="dog"></canvas>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="script.js"></script>
 </body>
